@@ -1,9 +1,9 @@
 import { myEmitter } from './dirwatcher'
 import csv from 'csvtojson'
 
-myEmitter.on('changed', (filename) => {
-  console.log(`importer event occurred with filename ${filename}`);
-  csv().fromFile('./data/'+filename)
+myEmitter.on('changed', (directory, filename) => {
+  console.log(`importer event occurred with directory ${directory} filename ${filename}`);
+  csv().fromFile(directory+'/'+filename)
     .then((jsonObj)=>{
     console.log(jsonObj);})
 });

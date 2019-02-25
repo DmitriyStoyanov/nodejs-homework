@@ -9,7 +9,7 @@ function callback(directory) {
     fs.readdir(directory, function(err, files) {
         newfiles = files.filter(x => !importedfiles.includes(x));
         for (var i=0; i<newfiles.length; i++) {
-            myEmitter.emit('changed', files[i]);
+            myEmitter.emit('changed', directory, files[i]);
         }
         importedfiles = importedfiles.concat(newfiles);
     })
