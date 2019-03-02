@@ -1,6 +1,6 @@
-import {dirwatcher, importer} from './modules'
+import {DirWatcher, Importer} from './modules';
 
-new importer;
-const myDirwatcher = new dirwatcher;
+new Importer();
+const myDirwatcher = new DirWatcher();
 
 myDirwatcher.watch('./data', 5000);
