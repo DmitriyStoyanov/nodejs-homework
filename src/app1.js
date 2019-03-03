@@ -1,6 +1,6 @@
 import {User, Product} from './models'
 
-import appconfig from './config/appconfig.json';
+import appconfig from '../config/appconfig.json';
 
 const developer = new User();
 const product = new Product();
