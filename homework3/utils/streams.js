@@ -1,5 +1,6 @@
 #!/usr/bin/env babel-node
 import program from 'commander';
+import fs from 'fs';
 
 const functions = {
     reverse: function() {
@@ -16,6 +17,7 @@ const functions = {
             process.stdout.write('end');
         });
     },
+
     transform: function(str) {
         console.log(`Could you type letters which will be upperCased`);
 
@@ -30,12 +32,24 @@ const functions = {
             process.stdout.write('end');
         });
     },
+
     outputFile: function(filePath) {
-        console.log(`outputFile ${filePath}`);
+        const reader = fs.createReadStream(filePath);
+        function read() {
+            let chunk = null;
+            while (null != (chunk = reader.read())) {
+                process.stdout.write(chunk.toString());
+            }
+        }
+        reader.on('readable', () => {
+            read();
+        });
     },
+
     convertFromFile: function(filePath) {
         console.log(`convertFromFile ${filePath}`);
     },
+
     convertToFile: function(filePath) {
         console.log(`convertToFile ${filePath}`);
     }
