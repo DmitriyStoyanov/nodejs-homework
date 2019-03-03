@@ -1,1 +1,0 @@
-npm i @babel/core @babel/node @babel/preset-env babel-eslint eslint eslint-config-google eslint-plugin-import nodemon --save-dev
