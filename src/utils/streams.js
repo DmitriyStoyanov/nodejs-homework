@@ -59,26 +59,43 @@ const functions = {
             .split('.').slice(0, -1).join('.') + '.json');
         readStream.pipe(csvtojson()).pipe(writeStream);
         console.log(`convertToFile ${filePath.split('.').slice(0, -1).join('.') + '.json'}`);
+    },
+
+    cssBundler: function(path) {
+        console.log(`cssBundler with path: ${path}`);
     }
 };
 
 program
     .usage('[options]')
-    .option('-a, --faction <action>', 'action to execute')
-    .option('-f, --file [file]', 'file for output')
+    .option('-a, --action <action>', 'action to execute:' +
+        '<reverse|transform|' +
+        'outputFile|convertFromFile|convertToFile|cssBundler>')
+    .option('-f, --file <file>',
+        'file for output for outputFile|convertFromFile|convertToFile actions')
+    .option('-p, --path <path>',
+        'directory with csv files for cssBundler action')
     .parse(process.argv);
 
-if ( typeof program.faction === 'undefined') {
+if ( typeof program.action === 'undefined') {
     console.error('no action is given!');
     program.outputHelp();
     process.exit(1);
 }
 
-if ((['outputFile', 'convertFromFile', 'convertToFile']
-    .indexOf(program.faction) > -1) && !fs.existsSync(program.file)) {
-    console.error('no file is given or file does not exists!');
+let parameter = '';
+
+if (program.action == 'cssBundler') {
+    parameter = program.path;
+} else {
+    parameter = program.file;
+}
+
+if ((['outputFile', 'convertFromFile', 'convertToFile', 'cssBundler']
+    .indexOf(program.action) > -1) && !fs.existsSync(parameter)) {
+    console.error('no file/path are given or file/path does not exists!');
     program.outputHelp();
     process.exit(1);
 }
 
-functions[program.faction](program.file);
+functions[program.action](parameter);
