@@ -1,6 +1,7 @@
 #!/usr/bin/env babel-node
 import program from 'commander';
 import fs from 'fs';
+import csvtojson from 'csvtojson';
 
 const functions = {
     reverse: function() {
@@ -18,7 +19,7 @@ const functions = {
         });
     },
 
-    transform: function(str) {
+    transform: function() {
         console.log(`Could you type letters which will be upperCased`);
 
         process.stdin.on('readable', () => {
@@ -47,7 +48,11 @@ const functions = {
     },
 
     convertFromFile: function(filePath) {
-        console.log(`convertFromFile ${filePath}`);
+        csvtojson()
+            .fromFile(filePath)
+            .then((jsonObj)=>{
+                console.log(jsonObj);
+            });
     },
 
     convertToFile: function(filePath) {
@@ -62,7 +67,14 @@ program
     .parse(process.argv);
 
 if ( typeof program.faction === 'undefined') {
-    console.error('no action given!');
+    console.error('no action is given!');
+    program.outputHelp();
+    process.exit(1);
+}
+
+if ((['outputFile', 'convertFromFile', 'convertToFile']
+    .indexOf(program.faction) > -1) && !fs.existsSync(program.file)) {
+    console.error('no file is given or file does not exists!');
     program.outputHelp();
     process.exit(1);
 }
