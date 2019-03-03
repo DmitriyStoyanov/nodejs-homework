@@ -48,15 +48,17 @@ const functions = {
     },
 
     convertFromFile: function(filePath) {
-        csvtojson()
-            .fromFile(filePath)
-            .then((jsonObj)=>{
-                console.log(jsonObj);
-            });
+        const readStream=fs.createReadStream(filePath);
+        const writeStream=process.stdout;
+        readStream.pipe(csvtojson()).pipe(writeStream);
     },
 
     convertToFile: function(filePath) {
-        console.log(`convertToFile ${filePath}`);
+        const readStream=fs.createReadStream(filePath);
+        const writeStream=fs.createWriteStream(filePath
+            .split('.').slice(0, -1).join('.') + '.json');
+        readStream.pipe(csvtojson()).pipe(writeStream);
+        console.log(`convertToFile ${filePath.split('.').slice(0, -1).join('.') + '.json'}`);
     }
 };
 
