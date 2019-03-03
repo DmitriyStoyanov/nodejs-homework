@@ -48,21 +48,37 @@ const functions = {
     },
 
     convertFromFile: function(filePath) {
-        const readStream=fs.createReadStream(filePath);
-        const writeStream=process.stdout;
+        const readStream = fs.createReadStream(filePath);
+        const writeStream = process.stdout;
         readStream.pipe(csvtojson()).pipe(writeStream);
     },
 
     convertToFile: function(filePath) {
-        const readStream=fs.createReadStream(filePath);
-        const writeStream=fs.createWriteStream(filePath
+        const readStream = fs.createReadStream(filePath);
+        const writeStream = fs.createWriteStream(filePath
             .split('.').slice(0, -1).join('.') + '.json');
         readStream.pipe(csvtojson()).pipe(writeStream);
         console.log(`convertToFile ${filePath.split('.').slice(0, -1).join('.') + '.json'}`);
     },
 
     cssBundler: function(path) {
-        console.log(`cssBundler with path: ${path}`);
+        const cssFinishFile = './data/nodejs-homework3.css';
+        console.log(`cssBundler will start with next path: ${path}`);
+        const files = fs.readdirSync(path);
+        console.log(`files in directory: ${files}`);
+        const cssFiles = files
+            .filter((file) => (file.endsWith('.css') && file !== 'bundle.css'
+                && file !== cssFinishFile))
+            .map((fileName) => (path + fileName));
+        console.log(`cssFiles: ${cssFiles}`);
+        const writeStream = fs.createWriteStream(path + 'bundle.css');
+        cssFiles.forEach( (fileName) => {
+            console.log(`this file will be added to bundle.css ${fileName}`);
+            const readStream = fs.createReadStream(fileName);
+            readStream.pipe(writeStream);
+        });
+        const readStream = fs.createReadStream(cssFinishFile);
+        readStream.pipe(writeStream);
     }
 };
 
@@ -77,7 +93,7 @@ program
         'directory with csv files for cssBundler action')
     .parse(process.argv);
 
-if ( typeof program.action === 'undefined') {
+if (typeof program.action === 'undefined') {
     console.error('no action is given!');
     program.outputHelp();
     process.exit(1);
