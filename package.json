@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app2.js",
     "lint": "eslint src",
+    "lint-fix": "eslint --fix src",
     "test": "npm run lint"
   },
   "author": "Dmitry Stoyanov <Dmitry_Stoyanov@epam.com>",
