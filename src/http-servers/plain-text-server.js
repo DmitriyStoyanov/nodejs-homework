@@ -1,8 +1,7 @@
 import http from 'http';
 http.createServer()
     .on('request', (req, res) => {
-        const {url, method, httpVersion} = req;
-        console.log(`${method} ${url} HTTP/${httpVersion}`);
+        console.log(`${req.method} ${req.url} HTTP/${req.httpVersion}`);
         res.writeHead(200, {
             'ContentType': 'plain text'
         });
