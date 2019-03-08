@@ -5,7 +5,9 @@
   "main": "./src/app2.js",
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app2.js",
-    "test": "echo \"OK: no test specified\" && exit 0"
+    "lint": "eslint src",
+    "lint-fix": "eslint --fix src",
+    "test": "npm run lint"
   },
   "author": "Dmitry Stoyanov <Dmitry_Stoyanov@epam.com>",
   "license": "ISC",

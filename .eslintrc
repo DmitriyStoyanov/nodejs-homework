@@ -18,6 +18,7 @@
         "node": true
     },
     "rules": {
+        "no-console": "off",
         "comma-dangle": [
             "error",
             "never"
