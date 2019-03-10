@@ -6,5 +6,11 @@ http.createServer()
             'ContentType': 'plain text'
         });
         res.end('Hello World');
+        req.on('error', (err) => {
+            console.error(err);
+        });
+        res.on('error', (err) => {
+            console.error(err);
+        });
     })
     .listen(3000);
