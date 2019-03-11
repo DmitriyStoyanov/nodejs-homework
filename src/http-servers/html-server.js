@@ -9,6 +9,10 @@ const replaceMessage = new Transform({
     }
 });
 
+replaceMessage.on('error', (err) => {
+    console.log(new Date, err);
+});
+
 http.createServer()
     .on('request', (req, res) => {
         res.writeHead(200, {
