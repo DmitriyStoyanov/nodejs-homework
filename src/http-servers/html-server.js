@@ -1,17 +1,6 @@
 import http from 'http';
 import fs from 'fs';
-import {Transform} from 'stream';
-
-const replaceMessage = new Transform({
-    transform(chunk, encoding, callback) {
-        this.push(chunk.toString().replace(/{message}/g, 'Hello World'));
-        callback();
-    }
-});
-
-replaceMessage.on('error', (err) => {
-    console.log(new Date, err);
-});
+import replace from 'stream-replace';
 
 http.createServer()
     .on('request', (req, res) => {
@@ -19,7 +8,7 @@ http.createServer()
             'ContentType': 'html'
         });
         fs.createReadStream('data/index.html')
-            .pipe(replaceMessage)
+            .pipe(replace('{message}', 'Hello World'))
             .pipe(res);
     })
     .listen(3000);
