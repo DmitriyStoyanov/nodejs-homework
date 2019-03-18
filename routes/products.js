@@ -20,6 +20,12 @@ router.get('/api/products/:id', (req, res, next) => {
     next();
 });
 
+router.post('/api/products', (req, res, next) => {
+    const product = req.body;
+    products.push(product);
+    res.json(product);
+});
+
 router.get('/api/products/:id/reviews', (req, res, next) => {
     const product = _.find(products, {id: Number(req.params.id)});
     if (product === undefined || product.reviews === undefined) {
