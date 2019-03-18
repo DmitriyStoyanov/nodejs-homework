@@ -11,6 +11,16 @@ const products = [
         options: [
             {color: 'blue'},
             {size: 'XL'}
+        ],
+        reviews: [
+            {
+                user: 'anonymous',
+                message: 'Very cool t-shirt'
+            },
+            {
+                user: 'Joe',
+                message: 'Too big for my size'
+            }
         ]
     },
     {
@@ -21,6 +31,12 @@ const products = [
         options: [
             {color: 'red'},
             {size: 'XXL'}
+        ],
+        reviews: [
+            {
+                user: 'anonymous',
+                message: 'Not bad'
+            }
         ]
     }
 ];
@@ -41,5 +57,15 @@ router.get('/api/products/:id', (req, res, next) => {
     next();
 });
 
+router.get('/api/products/:id/reviews', (req, res, next) => {
+    let product = _.find(products, {id: Number(req.params.id)});
+    if (product === undefined || product.reviews === undefined) {
+        res.status(404)
+            .json({message: `product with id ${req.params.id} not found or reviews not found`});
+    } else {
+        res.json(product.reviews);
+    }
+    next();
+});
 
 export default router;
