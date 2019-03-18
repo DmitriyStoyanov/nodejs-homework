@@ -10,7 +10,7 @@ router.get('/api/products', (req, res, next) => {
 });
 
 router.get('/api/products/:id', (req, res, next) => {
-    let product = _.find(products, {id: Number(req.params.id)});
+    const product = _.find(products, {id: Number(req.params.id)});
     if (product === undefined) {
         res.status(404)
             .json({message: `product with id ${req.params.id} not found`});
@@ -21,7 +21,7 @@ router.get('/api/products/:id', (req, res, next) => {
 });
 
 router.get('/api/products/:id/reviews', (req, res, next) => {
-    let product = _.find(products, {id: Number(req.params.id)});
+    const product = _.find(products, {id: Number(req.params.id)});
     if (product === undefined || product.reviews === undefined) {
         res.status(404)
             .json({message: `product with id ${req.params.id} not found or reviews not found`});
