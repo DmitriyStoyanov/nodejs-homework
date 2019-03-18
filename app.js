@@ -1,11 +1,9 @@
 import express from 'express';
+import products from './routes/products';
+
 const app = express();
-const router = express.Router();
 
-router.get('/employees/:id', function(req, res) {
-    res.json( {id: req.params.id} );
-});
 
-app.use('/', router);
+app.use('/', products);
 
 export default app;
