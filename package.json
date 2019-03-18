@@ -23,6 +23,10 @@
     "eslint-config-google": "^0.12.0",
     "eslint-plugin-import": "^2.16.0",
     "events": "^3.0.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "stream-replace": "^1.0.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
