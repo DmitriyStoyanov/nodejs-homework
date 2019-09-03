@@ -67,8 +67,8 @@ const functions = {
         const files = fs.readdirSync(path);
         console.log(`files in directory: ${files}`);
         const cssFiles = files
-            .filter((file) => (file.endsWith('.css') && file !== 'bundle.css'
-                && file !== cssFinishFile))
+            .filter((file) => (file.endsWith('.css') && file !== 'bundle.css' &&
+                file !== cssFinishFile))
             .map((fileName) => (path + fileName));
         console.log(`cssFiles: ${cssFiles}`);
         const writeStream = fs.createWriteStream(path + 'bundle.css');
