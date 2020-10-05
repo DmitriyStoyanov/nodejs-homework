@@ -22,7 +22,7 @@
     "csvtojson": "^2.0.10",
     "eslint": "^7.9.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-import": "^2.22.1",
     "events": "^3.2.0",
     "lodash": "^4.17.20",
     "nodemon": "^2.0.4",
