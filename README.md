@@ -18,3 +18,11 @@ On <http://localhost:8080/api/users> you will find list of users
 In [models/products.js](models/products.js) described currently list of products in js
 
 In [models/users.js](models/users.js) described currently list of users in js
+
+## CI
+
+In this repo added next CI processes:
+
+- [travis-ci](https://travis-ci.com/) in [.travis.yml](.travis.yml)
+- [github actions](https://github.com/features/actions) in [.github\workflows\node.js.yml](.github/workflows/node.js.yml)
+- [dependabot](https://dependabot.com/) in [.github/dependabot.yml](.github\dependabot.yml)
