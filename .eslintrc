@@ -11,7 +11,7 @@
         "ecmaVersion": 7,
         "sourceType": "module"
     },
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "env": {
         "mocha": true,
         "es6": true,
