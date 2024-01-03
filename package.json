@@ -15,7 +15,7 @@
     "@babel/core": "^7.23.7",
     "@babel/eslint-parser": "^7.23.3",
     "@babel/node": "^7.22.19",
-    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-env": "^7.23.7",
     "@babel/preset-stage-2": "^7.8.3",
     "@babel/register": "^7.22.15",
     "cookie-parser": "^1.4.6",
