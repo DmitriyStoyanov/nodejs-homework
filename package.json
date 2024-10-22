@@ -12,7 +12,7 @@
   "author": "Dmitry Stoyanov <Dmitry_Stoyanov@epam.com>",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.25.8",
+    "@babel/core": "^7.25.9",
     "@babel/eslint-parser": "^7.25.8",
     "@babel/node": "^7.25.7",
     "@babel/preset-env": "^7.25.8",
