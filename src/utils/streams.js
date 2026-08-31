@@ -37,7 +37,7 @@ const functions = {
     outputFile: function(filePath) {
         const reader = fs.createReadStream(filePath);
         function read() {
-            let chunk = null;
+            let chunk;
             while (null != (chunk = reader.read())) {
                 process.stdout.write(chunk.toString());
             }
@@ -99,7 +99,7 @@ if (typeof program.action === 'undefined') {
     process.exit(1);
 }
 
-let parameter = '';
+let parameter;
 
 if (program.action == 'cssBundler') {
     parameter = program.path;

@@ -20,7 +20,7 @@ router.get('/api/products/:id', (req, res, next) => {
     next();
 });
 
-router.post('/api/products', (req, res, next) => {
+router.post('/api/products', (req, res) => {
     const product = req.body;
     products.push(product);
     res.json(product);
