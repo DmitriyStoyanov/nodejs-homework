@@ -17,7 +17,7 @@ export default [
     {
         ignores: ["node_modules/**", "eslint.config.mjs"],
     },
-    ...compat.extends("eslint:recommended", "plugin:import/errors", "plugin:import/warnings"),
+    ...compat.extends("eslint:recommended", "plugin:import-x/errors", "plugin:import-x/warnings"),
     {
         languageOptions: {
             parser: babelParser,
