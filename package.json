@@ -18,7 +18,7 @@
     "@babel/preset-env": "^8.0.2",
     "@babel/preset-stage-2": "^7.8.3",
     "@babel/register": "^8.0.1",
-    "@eslint/eslintrc": "^3.3.6",
+    "@eslint/eslintrc": "^3.3.7",
     "@eslint/js": "^10.0.1",
     "cookie-parser": "^1.4.7",
     "csvtojson": "^2.0.14",
